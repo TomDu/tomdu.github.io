@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="自控力 Part 3"/>
+
+
+
+
+  <meta name="keywords" content="SWE" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Tom Du">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.9.0" />
+
+
+
+<link rel="canonical" href="http://tomdu.github.io/2016/05/02/自控力part3/"/>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.9.0" />
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"title":"Tom Du","subtitle":"Sizhong's Blog.","description":"Yo~","author":"Sizhong Du","language":"zh-cn","timezone":null,"url":"http://tomdu.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":year-:month-:day-:title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"hexo-theme-even","deploy":{"type":"git","repo":"git@github.com:TomDu/tomdu.github.io.git"},"ignore":[],"keywords":"SWE","index_generator":{"per_page":10,"order_by":"-date","path":""},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"tag_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"since":2015,"favicon":"/favicon.ico","rss":"default","menu":{"Home":"/","Archives":"/archives/","Tags":"/tags","About":"/about"},"color":"Default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":true,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"your@email.com","stack-overflow":null,"twitter":null,"facebook":null,"linkedin":null,"google":null,"github":"https://github.com/tomdu","weibo":"http://weibo.com/dusizhong","zhihu":null,"douban":null,"pocket":null,"tumblr":null,"instagram":null},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.9.0"};
+</script>
+
+    <title> 自控力 Part 3 - Tom Du </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Tom Du</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            关于
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Tom Du</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              关于
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          自控力 Part 3
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-05-02
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CH-7"><span class="toc-text">CH 7</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CH-8"><span class="toc-text">CH 8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CH-9"><span class="toc-text">CH 9</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h1 id="CH-7"><a href="#CH-7" class="headerlink" title="CH 7"></a>CH 7</h1><p>我们无法明确地预知未来，这为我们带来了诱惑，让我们拖延着不做某些事。</p>
+<p>深入剖析</p>
+<ul>
+<li>你给未来的奖励打了几折？在你的意志力挑战中，每当你屈服于诱惑或拖延的时候，你会出售哪些未来的奖励？</li>
+<li>你在等待未来的自己吗？你是否在推迟重要的改变或任务，等待自控力更强的未来的自己出现？</li>
+<li>为了你自己好，你是否太“高瞻远瞩”了？你是否觉得放纵自己比抵抗诱惑还困难？</li>
+</ul>
+<p>意志力实验</p>
+<ul>
+<li>等待10分钟。在诱惑面前强制安排10分钟的等待时间。在这10分钟里，一定要时刻想着长远的奖励，抵制住诱惑。</li>
+<li>降低你的折扣率。当你受到诱惑，要做和长期利益相悖的事情时，请想一想，这个选择意味着，你为了及时的满足感放弃了更好的长期奖励。</li>
+<li>预先对未来的自己做出承诺。作好拒绝诱惑的准备，让改变偏好变得更难，用奖励或威胁来激励未来的自己。</li>
+<li>预见未来的自己。创造一个未来的记忆，给未来的自己发条信息，想象一下未来的自己。</li>
+</ul>
+<a id="more"></a>
+<hr>
+<h1 id="CH-8"><a href="#CH-8" class="headerlink" title="CH 8"></a>CH 8</h1><p>自控受到社会认同的影响，这使得意志力和诱惑都具有传染性。</p>
+<p>深入剖析</p>
+<ul>
+<li>你的社交网络。在你的社交圈子里，有没有其他人和你有同样的意志力挑战？</li>
+<li>你在模仿谁？睁大你的眼睛，寻找蛛丝马迹，看看你有没有模仿别人的行为。</li>
+<li>你最可能从谁身上学到东西？谁是你“最亲密的别人”？有没有什么行为是你从他们身上学到的？或者说，他们有没有从你身上学到一些行为？</li>
+<li>可别人都这么做！你有没有用社会认同来说服自己，说你的意志力挑战没什么大不了？</li>
+</ul>
+<p>意志力实验</p>
+<ul>
+<li>增强你的免疫系统。为了避免重蹈别人意志力失效的覆辙，在每天刚开始的时候，花点时间想一想自己的目标。</li>
+<li>感染自控力。当你需要一些额外的意志力时，给自己树立一个榜样。问问自己：那个意志力强人会怎么做？</li>
+<li>自豪感的力量。公开你的意志力挑战，想象你在意志力挑战成功后将多么自豪。</li>
+<li>把它变成集体项目。你能在意志力挑战上赢过其他人吗？</li>
+</ul>
+<hr>
+<h1 id="CH-9"><a href="#CH-9" class="headerlink" title="CH 9"></a>CH 9</h1><p>试图压抑自己的想法、情绪和欲望，只会产生相反的效果，让你更容易去想、去感受、去做你原本最想逃避的事。</p>
+<p>深入剖析</p>
+<ul>
+<li>观察“反弹”效应，看看你有没有想逃避的想法？压抑这些想法是否有效？试图摆脱某种想法，是否反而会让那种想法变得更强烈？</li>
+<li>你最想得到的是什么？当你拼命试着把某件东西赶出脑海时，是不是反而对它产生了更强的渴望？</li>
+</ul>
+<p>意志力实验</p>
+<ul>
+<li>忠于你的感受，但别相信你所有的想法。当你产生不快的想法时，将注意力转移到身体上，然后专注于呼吸，想象这些想法想浮云一样逐渐淡去。</li>
+<li>直面自身欲望，但不要付诸行动。当欲望来袭时，注意到它，但不要马上试着转移注意力或与之争论。提醒自己“白熊”现象和“反弹”效应，记住你真正重要的目标。</li>
+<li>驾驭冲动。当冲动一直存在时，与这些生理上的感觉共处，像驾驭海浪一样驾驭它，不要试图摆脱它，但也不要将冲动付诸行动。</li>
+</ul>
+<p>~The End~</p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://tomdu.github.io">Sizhong Du</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://tomdu.github.io/2016/05/02/自控力part3/">http://tomdu.github.io/2016/05/02/自控力part3/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Reading/">Reading</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/05/09/经济学的思维方式/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">经济学的思维方式</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2016/04/19/自控力part2/">
+        <span class="next-text nav-default">自控力 Part 2</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/tomdu" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/dusizhong" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2018
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Sizhong Du</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  
+
+  
+
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.9.0"></script>
+
+  </body>
+</html>

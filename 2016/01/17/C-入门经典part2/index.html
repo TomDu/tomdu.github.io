@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="C#入门经典 Part 2"/>
+
+
+
+
+  <meta name="keywords" content="SWE" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Tom Du">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.9.0" />
+
+
+
+<link rel="canonical" href="http://tomdu.github.io/2016/01/17/C-入门经典part2/"/>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.9.0" />
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"title":"Tom Du","subtitle":"Sizhong's Blog.","description":"Yo~","author":"Sizhong Du","language":"zh-cn","timezone":null,"url":"http://tomdu.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":year-:month-:day-:title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"hexo-theme-even","deploy":{"type":"git","repo":"git@github.com:TomDu/tomdu.github.io.git"},"ignore":[],"keywords":"SWE","index_generator":{"per_page":10,"order_by":"-date","path":""},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"tag_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"since":2015,"favicon":"/favicon.ico","rss":"default","menu":{"Home":"/","Archives":"/archives/","Tags":"/tags","About":"/about"},"color":"Default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":true,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"your@email.com","stack-overflow":null,"twitter":null,"facebook":null,"linkedin":null,"google":null,"github":"https://github.com/tomdu","weibo":"http://weibo.com/dusizhong","zhihu":null,"douban":null,"pocket":null,"tumblr":null,"instagram":null},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.9.0"};
+</script>
+
+    <title> C#入门经典 Part 2 - Tom Du </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Tom Du</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            关于
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Tom Du</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              关于
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          C#入门经典 Part 2
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-01-17
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CH-6"><span class="toc-text">CH 6</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CH-7"><span class="toc-text">CH 7</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CH-8"><span class="toc-text">CH 8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CH-9"><span class="toc-text">CH 9</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CH-10"><span class="toc-text">CH 10</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h1 id="CH-6"><a href="#CH-6" class="headerlink" title="CH 6"></a>CH 6</h1><p>参数数组: 只能放在函数定义的最后。<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span>(<span class="params"><span class="keyword">params</span> <span class="keyword">int</span>[] vals</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="keyword">var</span> val <span class="keyword">in</span> vals)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>引用参数: <code>ref</code>。必须在函数中使用非常量变量；变量必须初始化过。<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span>(<span class="params"><span class="keyword">ref</span> <span class="keyword">int</span> val</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">foo(<span class="keyword">ref</span> a);</span><br></pre></td></tr></table></figure></p>
+<p>输出参数: <code>out</code>。变量可以未赋值；在使用<code>out</code>参数时，必须把它看成是尚未赋值。<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span>(<span class="params"><span class="keyword">out</span> <span class="keyword">int</span> val</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    val = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a;</span><br><span class="line">foo(<span class="keyword">out</span> a);</span><br></pre></td></tr></table></figure></p>
+<p>委托(delegate): 存储函数引用。<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">delegate</span> <span class="keyword">double</span> <span class="title">FuncDelegate</span>(<span class="params"><span class="keyword">double</span> a, <span class="keyword">double</span> b</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">foo</span>(<span class="params"><span class="keyword">double</span> a, <span class="keyword">double</span> b</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">bar</span>(<span class="params"><span class="keyword">double</span> a, <span class="keyword">double</span> b</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">FuncDelegate fd;</span><br><span class="line"></span><br><span class="line">fd = <span class="keyword">new</span> FuncDelegate(foo); <span class="comment">// fd = foo;</span></span><br><span class="line">fd(<span class="number">1.0</span>, <span class="number">2.0</span>);</span><br><span class="line"></span><br><span class="line">fd = <span class="keyword">new</span> FuncDelegate(bar); <span class="comment">// fd = bar;</span></span><br><span class="line">fd(<span class="number">3.0</span>, <span class="number">4.0</span>);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="CH-7"><a href="#CH-7" class="headerlink" title="CH 7"></a>CH 7</h1><p>try…catch…finally: 可以只有try块和finally块或有一个try块和好几个catch块；如果有一个或多个catch块，finally可选，否则就是必须的。</p>
+<hr>
+<h1 id="CH-8"><a href="#CH-8" class="headerlink" title="CH 8"></a>CH 8</h1><p>通过把默认构造函数设置为私有的，可以强制类的用户使用非默认的构造函数。</p>
+<p>UML中，类的静态成员带有下划线。</p>
+<p>静态构造函数: 为静态成员提供初始化操作。一个类只能有一个静态构造函数，构造函数无访问修饰符和任何参数。静态函数在下列情况被调用</p>
+<ul>
+<li>创建包含静态构造函数的类的实例时。</li>
+<li>访问包含静态构造函数的类的静态成员时。</li>
+</ul>
+<p>静态类: 只包含静态成员，不能包含实例构造函数，可以有一个静态构造函数。</p>
+<p>可删除的对象: 支持<code>IDisposable</code>接口，必须实现<code>Dispose()</code>方法，当不再需要对象时，<code>Dispose()</code>方法被调用，资源得到释放，否则会等到垃圾回收调用析构方法时才会释放资源。</p>
+<p><code>using</code>关键字可以在代码块中初始化使用重要资源的对象，在代码块的末尾会自动调用<code>Dispose()</code>方法。<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;ClassName&gt; &lt;VariableName&gt; = <span class="keyword">new</span> &lt;ClassName&gt;();</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="keyword">using</span> (&lt;VariableName&gt;)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> (&lt;ClassName&gt; &lt;VariableName&gt; = <span class="keyword">new</span> &lt;ClassName&gt;())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>值类型总是包含一个值，引用类型可以是null。</p>
+<hr>
+<h1 id="CH-9"><a href="#CH-9" class="headerlink" title="CH 9"></a>CH 9</h1><p>类的访问级别：<code>internal</code>(默认)、<code>public</code>。</p>
+<p>抽象类(<code>abstract class</code>): 不能实例化、只能继承、可以有抽象成员。</p>
+<p>密封类(<code>sealed class</code>): 不能继承。</p>
+<p>继承<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class MyBase</span><br><span class="line">&#123;</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Myclass: My Base</span><br><span class="line">&#123;</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编译器不允许派生类的可访问性高于基类。</p>
+<p>接口的声明必须更在基类后面。</p>
+<p>接口访问级别和类相同；不能在接口中使用关键字<code>abstract</code>和<code>sealed</code>，没有意义。</p>
+<p><code>GetType()</code>: 返回对象类型。</p>
+<p><code>typeof</code>: 运算符，把类名转换为<code>System.Type</code>对象。</p>
+<p>.NET中使用的析构函数称为<code>Finalize()</code>。</p>
+<p>在初始化器中指定基类构造函数<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyClass</span>: <span class="title">Base</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyClass</span>(<span class="params"><span class="keyword">int</span> i, <span class="keyword">int</span> j</span>): <span class="title">base</span>(<span class="params">j</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在初始化器中调用其他构造函数<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyClass</span>: <span class="title">Base</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyClass</span>(<span class="params"><span class="keyword">int</span> i, <span class="keyword">int</span> j</span>): <span class="title">this</span>(<span class="params">j</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接口成员是public的，抽象类成员可以是private(只要不是抽象的)、protected、internal、protected internal(其中受保护的内部成员只能在应用程序的代码或派生类中访问)。接口不能包含字段、构造函数、析构函数、静态成员或常量。</p>
+<p>对象的赋值是引用操作，结构的赋值是值拷贝。</p>
+<hr>
+<h1 id="CH-10"><a href="#CH-10" class="headerlink" title="CH 10"></a>CH 10</h1><p>.NET Framework中的公共字段以PascalCasing形式命名，私有字段通常以camelCasing来命名。</p>
+<p><code>readonly</code>: 只能在执行构造函数的过程中或者初始化赋值语句赋值。</p>
+<p><code>const</code>成员也是静态的，不需要static修饰符。</p>
+<p>类成员方法可以使用的关键字：</p>
+<ul>
+<li><code>virtual</code>: 方法可以重写</li>
+<li><code>abstract</code>: 方法必须在非抽象的派生类中重写</li>
+<li><code>override</code>: 方法重写了一个基类方法</li>
+<li><code>extern</code>: 方法定义放在其他地方</li>
+</ul>
+<p>如果使用了<code>override</code>，也可以使用<code>sealed</code>来指定在派生类中不能对这个方法做进一步的修改。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public override sealed void foo()</span><br><span class="line">&#123;</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>使用<code>extern</code>可以在项目外部提供方法的实现代码。</p>
+<p>属性: 访问器<code>get</code>&amp;<code>set</code>，至少包含一个，属性才是有效的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private int myInt;</span><br><span class="line"></span><br><span class="line">public int MyIntProp</span><br><span class="line">&#123;</span><br><span class="line">    get</span><br><span class="line">    &#123;</span><br><span class="line">        return myInt;</span><br><span class="line">    &#125;</span><br><span class="line">    set</span><br><span class="line">    &#123;</span><br><span class="line">        myInt = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>属性可以使用<code>vitual</code>、<code>override</code>和<code>abstract</code>关键字。访问器的可访问性不能高于它所属的属性。</p>
+<p>自动属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public int MyIntProp</span><br><span class="line">&#123;</span><br><span class="line">    get;</span><br><span class="line">    private set;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>隐藏基类方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class MyDerivedClass: Base</span><br><span class="line">&#123;</span><br><span class="line">    new public void foo()</span><br><span class="line">    &#123;</span><br><span class="line">        // ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>重写基类方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Base</span><br><span class="line">&#123;</span><br><span class="line">    // ...</span><br><span class="line">    public virtual void foo()</span><br><span class="line">    &#123;</span><br><span class="line">        // ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Derived: Base</span><br><span class="line">&#123;</span><br><span class="line">    // ...</span><br><span class="line">    public override void foo()</span><br><span class="line">    &#123;</span><br><span class="line">        // ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>用<code>base</code>关键字调用基类方法(非静态成员中使用)。</p>
+<p>接口</p>
+<ul>
+<li>不允许使用访问修饰符，所有接口都隐式地是公共的。</li>
+<li>接口成员不能包括代码体。</li>
+<li>接口不能定义字段成员，可以定义属性。</li>
+<li>不能用关键字static、virtual、abstract、或sealed来定义接口成员。</li>
+<li>类型定义成员是禁止的。(?)</li>
+</ul>
+<p>部分类、部分方法: <code>partial</code>。</p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://tomdu.github.io">Sizhong Du</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://tomdu.github.io/2016/01/17/C-入门经典part2/">http://tomdu.github.io/2016/01/17/C-入门经典part2/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/C/">C#</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/01/18/C-入门经典part3/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">C#入门经典 Part 3</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2016/01/16/C-入门经典part1/">
+        <span class="next-text nav-default">C#入门经典 Part 1</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/tomdu" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/dusizhong" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2018
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Sizhong Du</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  
+
+  
+
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.9.0"></script>
+
+  </body>
+</html>

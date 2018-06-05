@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="C#入门经典 Part 3"/>
+
+
+
+
+  <meta name="keywords" content="SWE" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Tom Du">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.9.0" />
+
+
+
+<link rel="canonical" href="http://tomdu.github.io/2016/01/18/C-入门经典part3/"/>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.9.0" />
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"title":"Tom Du","subtitle":"Sizhong's Blog.","description":"Yo~","author":"Sizhong Du","language":"zh-cn","timezone":null,"url":"http://tomdu.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":year-:month-:day-:title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"hexo-theme-even","deploy":{"type":"git","repo":"git@github.com:TomDu/tomdu.github.io.git"},"ignore":[],"keywords":"SWE","index_generator":{"per_page":10,"order_by":"-date","path":""},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"tag_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"since":2015,"favicon":"/favicon.ico","rss":"default","menu":{"Home":"/","Archives":"/archives/","Tags":"/tags","About":"/about"},"color":"Default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":true,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"your@email.com","stack-overflow":null,"twitter":null,"facebook":null,"linkedin":null,"google":null,"github":"https://github.com/tomdu","weibo":"http://weibo.com/dusizhong","zhihu":null,"douban":null,"pocket":null,"tumblr":null,"instagram":null},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.9.0"};
+</script>
+
+    <title> C#入门经典 Part 3 - Tom Du </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Tom Du</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            关于
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Tom Du</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              关于
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          C#入门经典 Part 3
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-01-18
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CH-11"><span class="toc-text">CH 11</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h1 id="CH-11"><a href="#CH-11" class="headerlink" title="CH 11"></a>CH 11</h1><p><code>System.Collections</code>名空间中的几个接口提供了基本的集合功能:</p>
+<ul>
+<li><code>IEnumerable</code>可以迭代集合中的项。</li>
+<li><code>ICollection</code>(继承于<code>IEnumerable</code>)可以获取集合中的项的个数，并能把项复制到一个简单的数组类型中。</li>
+<li><code>IList</code>(继承于<code>IEnumerable</code>和<code>ICollection</code>)提供了集合的项列表，允许访问这些项，并提供其他一些与项列表的相关的基本功能。</li>
+<li><code>IDictionary</code>(继承于<code>IEnumerable</code>和<code>ICollection</code>)类似于<code>IList</code>，但提供了可通过键值访问的项列表。</li>
+</ul>
+<p><code>System.Array</code>类实现了<code>IList</code>、<code>ICollection</code>和<code>IEnumerable</code>，表示大小固定的项列表。</p>
+<p><code>System.Collections.ArrayList</code>类实现了<code>IList</code>、<code>ICollection</code>和<code>IEnumerable</code>，表示大小可变的项列表。</p>
+<p><code>System.Collections.CollectionBase</code>; <code>System.Collections.DictionaryBase</code></p>
+<a id="more"></a>
+<p>在<code>foreach</code>循环中，迭代一个<code>collectionObject</code>集合的过程如下:</p>
+<ol>
+<li>调用<code>collectionObject.GetEnumerator()</code>，返回一个<code>IEnumerator</code>引用。这个方法可以通过<code>IEnumerator</code>接口的实现代码来获得，但是可选。</li>
+<li>调用所返回的<code>IEnumerator</code>接口的<code>MoveNext()</code>方法。</li>
+<li>如果<code>MoveNext()</code>方法返回<code>true</code>，就使用<code>IEnumerator</code>接口的<code>Current</code>属性来获取对象的一个引用。</li>
+<li>重复2、3直到<code>MoveNext()</code>返回false为止，此时循环停止。</li>
+</ol>
+<p>迭代器: 一个代码块，顺序提供了要在<code>foreach</code>循环中使用的所有值。</p>
+<ul>
+<li>如果要迭代一个类，使用方法<code>GetEnumerator()</code>，返回类型是<code>IEnumerator</code>。</li>
+<li>如果要迭代一个类成员，例如一个方法，则使用<code>IEnumerable</code>。</li>
+</ul>
+<p><code>yield</code><br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> IEnumerable <span class="title">SimpleList</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> <span class="string">"a"</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> <span class="string">"b"</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> <span class="string">"c"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="function"><span class="keyword">string</span> str <span class="keyword">in</span> <span class="title">SimpleList</span>(<span class="params"></span>))</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"><span class="doctag">///</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">A</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> IEnumerator <span class="title">GetEnumerator</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">yield</span> <span class="keyword">return</span> ...;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>浅复制和深复制<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class A</span><br><span class="line">&#123;</span><br><span class="line">    // ...</span><br><span class="line">    public object GetCopy()</span><br><span class="line">    &#123;</span><br><span class="line">        return MemberwiseClone(); // 浅复制</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">///</span><br><span class="line"></span><br><span class="line">public class Content</span><br><span class="line">&#123;</span><br><span class="line">    public int Val;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Cloner: ICloneable // 深复制</span><br><span class="line">&#123;</span><br><span class="line">    public Content MyContent = new Content();</span><br><span class="line"></span><br><span class="line">    public Cloner(int newVal)</span><br><span class="line">    &#123;</span><br><span class="line">        MyContent.Val = newVal;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public object Clone()</span><br><span class="line">    &#123;</span><br><span class="line">        Cloner clonedCloner = new Cloner(MyContent.Val);</span><br><span class="line">        return clonedCloner;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>封箱 &amp; 拆箱<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A a1 = new A();</span><br><span class="line">object obj = a1;</span><br><span class="line">A a2 = (A)obj;</span><br></pre></td></tr></table></figure></p>
+<p><code>is</code>运算符: 检查对象是不是给定类型，或者是否可以转换为给定类型，如果是，这个运算符就返回<code>true</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;operand&gt; is &lt;type&gt;</span><br></pre></td></tr></table></figure></p>
+<p>运算符重载<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> A <span class="keyword">operator</span> +(A a1, A a2) <span class="comment">// 双目操作符</span></span><br><span class="line">&#123;</span><br><span class="line">    A ret = <span class="keyword">new</span> A();</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> A opertor -(A a) <span class="comment">// 单目操作符</span></span><br><span class="line">&#123;</span><br><span class="line">    A ret = <span class="keyword">new</span> A();</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    reutrn ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>不要把签名相同的运算符添加到多个类中。</li>
+<li>如果混合了类型，操作数的顺序必须与运算符重载的参数顺序相同。</li>
+<li>不能重载赋值运算符。</li>
+<li>一些运算符(如<code>&lt;</code>和<code>&gt;</code>)必须成对重载。</li>
+<li>对于<code>==</code>和<code>!=</code>，通常需要重写<code>public override bool Equals(object op1)</code>和<code>public override int GetHashCode()</code>。</li>
+</ul>
+<p><code>IComparable</code>和<code>IComparer</code>接口</p>
+<ul>
+<li><code>IComparable</code>在要比较的对象的类中实现，可以比较该对象和另一个对象。</li>
+<li><code>IComparer</code>在一个单独的类中实现，可以比较任意两个对象。</li>
+</ul>
+<p><code>Comparer</code>: <code>IComparer</code>接口的默认实现，可以对简单类型以及支持<code>IComparable</code>接口的任意类型进行特定文化(不同国家语言的比较方式?)的比较，<code>Comparer.Default.Compare(a, b)</code>。</p>
+<p>对实现了<code>IComparer</code>接口的类对象list进行排序<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Person</span>: <span class="title">IComparable</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">CompareTo</span>(<span class="params"><span class="keyword">object</span> obj</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PersonComparer</span>: <span class="title">IComparer</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> PersonComparer Default = <span class="keyword">new</span> PersonComparer();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Compare</span>(<span class="params"><span class="keyword">object</span> a, <span class="keyword">object</span> b</span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(a <span class="keyword">is</span> Person &amp;&amp; b <span class="keyword">is</span> Person)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> Comparer.Default.Compare(((Person)a).Name, ((Person)b).Name);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ArrayList list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">list.Add(<span class="keyword">new</span> Person(<span class="comment">/* ... */</span>));</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">list.Sort(); <span class="comment">// 调用Person类中的CompareTo()方法，Person类实现了IComparable</span></span><br><span class="line">list.Sort(PersonComparer.Default);</span><br></pre></td></tr></table></figure></p>
+<p>重载转换运算符<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">A</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">implicit</span> <span class="keyword">operator</span> <span class="title">B</span>(<span class="params">A a</span>) <span class="comment">// 隐式类型转换</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        B b = <span class="keyword">new</span> B();</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">B</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">explicit</span> <span class="keyword">operator</span> <span class="title">A</span>(<span class="params">B b</span>) <span class="comment">// 显式类型转换</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        A a = <span class="keyword">new</span> A();</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>as</code>运算符: 把一种类型转换为指定的引用类型，如果不能转换，表达式结果为<code>null</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;operand&gt; as &lt;type&gt;</span><br></pre></td></tr></table></figure></p>
+<p>适用情况:</p>
+<ul>
+<li><code>&lt;operand&gt;</code>的类型是<code>&lt;type&gt;</code>类型；</li>
+<li><code>&lt;operand&gt;</code>可以隐式转换为<code>&lt;type&gt;</code>类型；</li>
+<li><code>&lt;operand&gt;</code>可以封箱到<code>&lt;type&gt;</code>类型中。</li>
+</ul>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://tomdu.github.io">Sizhong Du</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://tomdu.github.io/2016/01/18/C-入门经典part3/">http://tomdu.github.io/2016/01/18/C-入门经典part3/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/C/">C#</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2016/01/20/C-入门经典part4/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">C#入门经典 Part 4</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2016/01/17/C-入门经典part2/">
+        <span class="next-text nav-default">C#入门经典 Part 2</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/tomdu" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/dusizhong" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2018
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Sizhong Du</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  
+
+  
+
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.9.0"></script>
+
+  </body>
+</html>

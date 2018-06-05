@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Yo~"/>
+
+
+
+
+  <meta name="keywords" content="SWE" />
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="Tom Du">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.9.0" />
+
+
+
+<link rel="canonical" href="http://tomdu.github.io/"/>
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.9.0" />
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"title":"Tom Du","subtitle":"Sizhong's Blog.","description":"Yo~","author":"Sizhong Du","language":"zh-cn","timezone":null,"url":"http://tomdu.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":year-:month-:day-:title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"hexo-theme-even","deploy":{"type":"git","repo":"git@github.com:TomDu/tomdu.github.io.git"},"ignore":[],"keywords":"SWE","index_generator":{"per_page":10,"order_by":"-date","path":""},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"tag_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"since":2015,"favicon":"/favicon.ico","rss":"default","menu":{"Home":"/","Archives":"/archives/","Tags":"/tags","About":"/about"},"color":"Default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":true,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"your@email.com","stack-overflow":null,"twitter":null,"facebook":null,"linkedin":null,"google":null,"github":"https://github.com/tomdu","weibo":"http://weibo.com/dusizhong","zhihu":null,"douban":null,"pocket":null,"tumblr":null,"instagram":null},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.9.0"};
+</script>
+
+    <title> Tom Du </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Tom Du</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            首页
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            归档
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            标签
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            关于
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Tom Du</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              首页
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              归档
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              标签
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              关于
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts">
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/08/14/C-高级编程/">《C#高级编程》拾遗</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-08-14
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h1 id="Part-1-C-语言"><a href="#Part-1-C-语言" class="headerlink" title="Part 1 C# 语言"></a>Part 1 C# 语言</h1><h2 id="Core-C"><a href="#Core-C" class="headerlink" title="Core C#"></a>Core C#</h2><p>常量总是静态的。</p>
+<p><code>byte</code>类型默认无符号，有符号的叫<code>sbyte</code>。</p>
+<p><code>decimal</code>类型不是基本类型，在计算时候会有性能损失。</p>
+<p><code>string</code>（<code>System.String</code>）：引用类型，对象分配在堆上。字符串不可变，修改一个字符串会创建一个新的string对象，原来字符串不变。</p>
+<p><code>object</code>（<code>System.Object</code>）。</p>
+<p><code>case</code>子句必须包含<code>break</code>语句，除非子句为空。</p>
+          <div class="read-more">
+            <a href="/2016/08/14/C-高级编程/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/05/09/经济学的思维方式/">经济学的思维方式</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-05-09
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h1 id="CH-1-经济学的思维方式"><a href="#CH-1-经济学的思维方式" class="headerlink" title="CH 1 经济学的思维方式"></a>CH 1 经济学的思维方式</h1><blockquote>
+<p>经济学是关于选择及其无意后果的理论。</p>
+</blockquote>
+<p>亚当·斯密 - 《国富论（国民财富的性质和原因的研究）》</p>
+<p>经济学的思维方式：所有社会现象均源于个体的行为和互动，在这些活动中人们基于期望的额外收益和成本进行选择。</p>
+<p>经济学的思维方式关注三个方面：</p>
+<ul>
+<li>行为 actions</li>
+<li>互动 interactions</li>
+<li>结果 consequences，不管这些结果是有意还是无意的。</li>
+</ul>
+<p>对行为的关注强调了优化（economizing，稀缺性约束下的选择行为）和权衡（trade-offs），或者说取舍。</p>
+          <div class="read-more">
+            <a href="/2016/05/09/经济学的思维方式/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/05/02/自控力part3/">自控力 Part 3</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-05-02
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h1 id="CH-7"><a href="#CH-7" class="headerlink" title="CH 7"></a>CH 7</h1><p>我们无法明确地预知未来，这为我们带来了诱惑，让我们拖延着不做某些事。</p>
+<p>深入剖析</p>
+<ul>
+<li>你给未来的奖励打了几折？在你的意志力挑战中，每当你屈服于诱惑或拖延的时候，你会出售哪些未来的奖励？</li>
+<li>你在等待未来的自己吗？你是否在推迟重要的改变或任务，等待自控力更强的未来的自己出现？</li>
+<li>为了你自己好，你是否太“高瞻远瞩”了？你是否觉得放纵自己比抵抗诱惑还困难？</li>
+</ul>
+<p>意志力实验</p>
+<ul>
+<li>等待10分钟。在诱惑面前强制安排10分钟的等待时间。在这10分钟里，一定要时刻想着长远的奖励，抵制住诱惑。</li>
+<li>降低你的折扣率。当你受到诱惑，要做和长期利益相悖的事情时，请想一想，这个选择意味着，你为了及时的满足感放弃了更好的长期奖励。</li>
+<li>预先对未来的自己做出承诺。作好拒绝诱惑的准备，让改变偏好变得更难，用奖励或威胁来激励未来的自己。</li>
+<li>预见未来的自己。创造一个未来的记忆，给未来的自己发条信息，想象一下未来的自己。</li>
+</ul>
+          <div class="read-more">
+            <a href="/2016/05/02/自控力part3/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/04/19/自控力part2/">自控力 Part 2</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-04-19
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h1 id="CH-4"><a href="#CH-4" class="headerlink" title="CH 4"></a>CH 4</h1><p>当我们将意志力挑战看成衡量道德水平的标准时，善行就会允许我们做坏事。为了能更好地自控，我们需要忘掉美德，关注目标和价值观。</p>
+<p>深入剖析：</p>
+<ul>
+<li>善与恶：当你的意志力挑战成功时，你会不会告诉自己你很“好”，然后允许自己做一些“坏”事。</li>
+<li>你是否在向明天赊账？你是不是告诉自己明天会弥补今天的过错？如果是这样的话，你是否真的弥补上了？光环效应：你是否只看到坏东西好的一面，如折扣省钱、零脂肪、保护环境。</li>
+<li>你觉得自己是谁？当你想到你的意志力挑战时，你觉得哪部份的你才是“真实”的你？是想追求目标的你，还是需要被控制的你？</li>
+</ul>
+<p>意志力实验：</p>
+<ul>
+<li>明天和今天毫无区别。当你想改变行为的时候，试着减少行为的变化性，而不是减少某种行为。</li>
+<li>取消许可，牢记理由。下一回，当你发现自己在用曾经的善行放纵辩护的时候，停下来想一想你做“好”事的原因，而不是你应不应该得到奖励。</li>
+</ul>
+          <div class="read-more">
+            <a href="/2016/04/19/自控力part2/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/04/03/自控力part1/">自控力 Part 1</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-04-03
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h1 id="CH-1"><a href="#CH-1" class="headerlink" title="CH 1"></a>CH 1</h1><p>意志力实际上是“我要做”、“我不要”和“我想要”这三种力量。它们协同努力，让我们变成更好的自己。</p>
+<p>深入剖析：</p>
+<ul>
+<li>更难的事是什么？</li>
+<li>认清两个自我。你的意志力挑战是如何描述相抗衡的两个自我？冲动的自己想要什么？明智的自己又想要什么？</li>
+</ul>
+<p>意志力实验：</p>
+<ul>
+<li>记录你的意志力选择。至少选一天，注意观察你做的关于意志力的决定。</li>
+<li>5分钟大脑训练冥想。在脑海中默念“呼”和“吸”，把注意力集中在呼吸上。当你开始走神的时候，重新集中注意力。</li>
+</ul>
+          <div class="read-more">
+            <a href="/2016/04/03/自控力part1/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/02/21/C-入门经典part6/">C#入门经典 Part 6</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-02-21
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h1 id="CH-23"><a href="#CH-23" class="headerlink" title="CH 23"></a>CH 23</h1><p>LINQ查询<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> results = </span><br><span class="line">    <span class="keyword">from</span> n <span class="keyword">in</span> names</span><br><span class="line">    <span class="keyword">where</span> n.StartsWith(<span class="string">"S"</span>)</span><br><span class="line">    <span class="keyword">orderby</span> n <span class="keyword">descending</span> <span class="comment">// orderby n.Substring(n.Length - 1)</span></span><br><span class="line">    <span class="keyword">select</span> n <span class="comment">// select new(n, ...)</span></span><br><span class="line">    ;</span><br></pre></td></tr></table></figure></p>
+<p>方法语法<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> results = names.OrderBy(n =&gt; n).Where(n =&gt; n.StartsWith(<span class="string">"S"</span>));</span><br><span class="line"><span class="keyword">var</span> results = names.OrderByDescending(n =&gt; n.Substring(n.Length - <span class="number">1</span>)).Where(n =&gt; n.StartsWith(<span class="string">"S"</span>)).<span class="keyword">select</span>(n =&gt; <span class="keyword">new</span>(n, ...)).Distinct();</span><br></pre></td></tr></table></figure></p>
+          <div class="read-more">
+            <a href="/2016/02/21/C-入门经典part6/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/02/16/C-入门经典part5/">C#入门经典 Part 5</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-02-16
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h1 id="CH-13"><a href="#CH-13" class="headerlink" title="CH 13"></a>CH 13</h1><p>事件(p325)</p>
+<p>匿名方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">myConnection += delegate(int a, string b)</span><br><span class="line">&#123;</span><br><span class="line">    // ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>特性(p344)</p>
+          <div class="read-more">
+            <a href="/2016/02/16/C-入门经典part5/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/01/20/C-入门经典part4/">C#入门经典 Part 4</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-01-20
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h1 id="CH-12"><a href="#CH-12" class="headerlink" title="CH 12"></a>CH 12</h1><p>可空类型: <code>System.Nullable&lt;T&gt;</code><br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.Nullble&lt;<span class="keyword">int</span>&gt; nullableInt;</span><br><span class="line">nullableInt = <span class="literal">null</span>; <span class="comment">// 等价于nullableInt = new System.Nullable&lt;int&gt;();</span></span><br></pre></td></tr></table></figure></p>
+<p>测试可空类型变量是否为null<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if(nullableInt == null) // ...</span><br><span class="line">if(nullableInt.HasValue) // ...</span><br></pre></td></tr></table></figure></p>
+          <div class="read-more">
+            <a href="/2016/01/20/C-入门经典part4/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/01/18/C-入门经典part3/">C#入门经典 Part 3</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-01-18
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h1 id="CH-11"><a href="#CH-11" class="headerlink" title="CH 11"></a>CH 11</h1><p><code>System.Collections</code>名空间中的几个接口提供了基本的集合功能:</p>
+<ul>
+<li><code>IEnumerable</code>可以迭代集合中的项。</li>
+<li><code>ICollection</code>(继承于<code>IEnumerable</code>)可以获取集合中的项的个数，并能把项复制到一个简单的数组类型中。</li>
+<li><code>IList</code>(继承于<code>IEnumerable</code>和<code>ICollection</code>)提供了集合的项列表，允许访问这些项，并提供其他一些与项列表的相关的基本功能。</li>
+<li><code>IDictionary</code>(继承于<code>IEnumerable</code>和<code>ICollection</code>)类似于<code>IList</code>，但提供了可通过键值访问的项列表。</li>
+</ul>
+<p><code>System.Array</code>类实现了<code>IList</code>、<code>ICollection</code>和<code>IEnumerable</code>，表示大小固定的项列表。</p>
+<p><code>System.Collections.ArrayList</code>类实现了<code>IList</code>、<code>ICollection</code>和<code>IEnumerable</code>，表示大小可变的项列表。</p>
+<p><code>System.Collections.CollectionBase</code>; <code>System.Collections.DictionaryBase</code></p>
+          <div class="read-more">
+            <a href="/2016/01/18/C-入门经典part3/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          <a class="post-link" href="/2016/01/17/C-入门经典part2/">C#入门经典 Part 2</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-01-17
+        </span>
+        
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h1 id="CH-6"><a href="#CH-6" class="headerlink" title="CH 6"></a>CH 6</h1><p>参数数组: 只能放在函数定义的最后。<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span>(<span class="params"><span class="keyword">params</span> <span class="keyword">int</span>[] vals</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span>(<span class="keyword">var</span> val <span class="keyword">in</span> vals)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br></pre></td></tr></table></figure></p>
+          <div class="read-more">
+            <a href="/2016/01/17/C-入门经典part2/" class="read-more-link">阅读更多</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    
+    
+      <a class="next" href="/page/2/">
+        <span class="next-text">下一页</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+
+          </div>
+          
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/tomdu" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/dusizhong" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      
+      <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2018
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Sizhong Du</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.9.0"></script>
+
+  </body>
+</html>
