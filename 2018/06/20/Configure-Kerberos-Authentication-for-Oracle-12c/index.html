@@ -17,7 +17,7 @@
 
 
 
-  <meta name="description" content="Yo~"/>
+  <meta name="description" content="Configure Kerberos Authentication for Oracle 12c in Windows 2016 AD"/>
 
 
 
@@ -42,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://tomdu.github.io/"/>
+<link rel="canonical" href="http://tomdu.github.io/2018/06/20/Configure-Kerberos-Authentication-for-Oracle-12c/"/>
 
 
 
@@ -89,7 +89,7 @@
   window.config = {"title":"Tom Du","subtitle":"Sizhong's Blog.","description":"Yo~","author":"Sizhong Du","language":"zh-cn","timezone":null,"url":"http://tomdu.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":year-:month-:day-:title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"hexo-theme-even","deploy":{"type":"git","repo":"git@github.com:TomDu/tomdu.github.io.git"},"ignore":[],"keywords":"SWE","index_generator":{"per_page":10,"order_by":"-date","path":""},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"tag_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"since":2015,"favicon":"/favicon.ico","rss":false,"menu":{"Home":"/","Archives":"/archives/","Tags":"/tags","About":"/about"},"color":"Default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":true,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":null,"stack-overflow":null,"twitter":null,"facebook":null,"linkedin":null,"google":null,"github":"https://github.com/tomdu","weibo":"http://weibo.com/dusizhong","zhihu":null,"douban":null,"pocket":null,"tumblr":null,"instagram":null},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.9.0"};
 </script>
 
-    <title> Tom Du </title>
+    <title> Configure Kerberos Authentication for Oracle 12c in Windows 2016 AD - Tom Du </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -200,14 +200,12 @@
         <div class="content-wrapper">
           <div id="content" class="content">
             
-  <section id="posts" class="posts">
-    
-      
+  
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
         
-          <a class="post-link" href="/2018/06/20/Configure-Kerberos-Authentication-for-Oracle-12c/">Configure Kerberos Authentication for Oracle 12c in Windows 2016 AD</a>
+          Configure Kerberos Authentication for Oracle 12c in Windows 2016 AD
         
       </h1>
 
@@ -222,15 +220,18 @@
 
     
     
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why"><span class="toc-text">Why</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Step-by-step"><span class="toc-text">Step by step</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-3-VMs-in-Azure-under-the-same-VNET"><span class="toc-text">Create 3 VMs in Azure, under the same VNET</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#On-siduOracle0"><span class="toc-text">On siduOracle0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#On-siduOracle998"><span class="toc-text">On siduOracle998</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#On-the-database-server-siduOracle998"><span class="toc-text">On the database server (siduOracle998)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#On-Windows-client-siduOracle1"><span class="toc-text">On Windows client (siduOracle1)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Validate"><span class="toc-text">Validate:</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </div>
+
 
 
     <div class="post-content">
       
-        
-        
-
-        
-          <h1 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h1><p>In order to test if Progress Oracle wire-protocol ODBC driver supports Kerberos authentication, I spent several days configuring Kerberos authentication for our test Oracle server.</p>
+        <h1 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h1><p>In order to test if Progress Oracle wire-protocol ODBC driver supports Kerberos authentication, I spent several days configuring Kerberos authentication for our test Oracle server.</p>
 <p>Basically, the configuration consists of 3 machine provisioned in Azure:</p>
 <ul>
 <li>A Windows 2016 AD Domain controller (with domain name SSIS.COM)</li>
@@ -339,493 +340,73 @@
 <h3 id="Validate"><a href="#Validate" class="headerlink" title="Validate:"></a>Validate:</h3><p>Login to siduOracle1 with ssis\test;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\sizhong.SSIS&gt;sqlplus /@mainorcl</span><br><span class="line"> </span><br><span class="line">SQL*Plus: Release 12.2.0.1.0 Production on Wed Jun 13 09:04:12 2018</span><br><span class="line"> </span><br><span class="line">Copyright (c) 1982, 2017, Oracle.  All rights reserved.</span><br><span class="line"> </span><br><span class="line">Last Successful login time: Wed Jun 13 2018 07:55:40 +00:00</span><br><span class="line"> </span><br><span class="line">Connected to:</span><br><span class="line">Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production</span><br><span class="line">With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options</span><br><span class="line"> </span><br><span class="line">SQL&gt;</span><br></pre></td></tr></table></figure>
 
-        
       
     </div>
 
     
-
-    
-
-  </article>
-
-    
       
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2018/06/06/Freewriting1/">Freewriting 1</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2018-06-06
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
       
-        
-        
-          
-        
 
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://tomdu.github.io">Sizhong Du</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://tomdu.github.io/2018/06/20/Configure-Kerberos-Authentication-for-Oracle-12c/">http://tomdu.github.io/2018/06/20/Configure-Kerberos-Authentication-for-Oracle-12c/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
         
-          <p>突然发现将近两年没更新了[捂脸]…</p>
-<p>既然我司收购了Github，以后便要多建repo多发commit~</p>
-          <div class="read-more">
-            <a href="/2018/06/06/Freewriting1/" class="read-more-link">阅读更多</a>
+          <div class="post-tags">
+            
+              <a href="/tags/Oracle/">Oracle</a>
+            
+              <a href="/tags/Kerberos/">Kerberos</a>
+            
+              <a href="/tags/Active-directory/">Active directory</a>
+            
           </div>
         
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/08/14/C-高级编程/">《C#高级编程》拾遗</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016-08-14
-        </span>
         
         
-      </div>
-    </header>
-
+  <nav class="post-nav">
     
     
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h1 id="Part-1-C-语言"><a href="#Part-1-C-语言" class="headerlink" title="Part 1 C# 语言"></a>Part 1 C# 语言</h1><h2 id="Core-C"><a href="#Core-C" class="headerlink" title="Core C#"></a>Core C#</h2><p>常量总是静态的。</p>
-<p><code>byte</code>类型默认无符号，有符号的叫<code>sbyte</code>。</p>
-<p><code>decimal</code>类型不是基本类型，在计算时候会有性能损失。</p>
-<p><code>string</code>（<code>System.String</code>）：引用类型，对象分配在堆上。字符串不可变，修改一个字符串会创建一个新的string对象，原来字符串不变。</p>
-<p><code>object</code>（<code>System.Object</code>）。</p>
-<p><code>case</code>子句必须包含<code>break</code>语句，除非子句为空。</p>
-          <div class="read-more">
-            <a href="/2016/08/14/C-高级编程/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/05/09/经济学的思维方式/">经济学的思维方式</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016-05-09
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h1 id="CH-1-经济学的思维方式"><a href="#CH-1-经济学的思维方式" class="headerlink" title="CH 1 经济学的思维方式"></a>CH 1 经济学的思维方式</h1><blockquote>
-<p>经济学是关于选择及其无意后果的理论。</p>
-</blockquote>
-<p>亚当·斯密 - 《国富论（国民财富的性质和原因的研究）》</p>
-<p>经济学的思维方式：所有社会现象均源于个体的行为和互动，在这些活动中人们基于期望的额外收益和成本进行选择。</p>
-<p>经济学的思维方式关注三个方面：</p>
-<ul>
-<li>行为 actions</li>
-<li>互动 interactions</li>
-<li>结果 consequences，不管这些结果是有意还是无意的。</li>
-</ul>
-<p>对行为的关注强调了优化（economizing，稀缺性约束下的选择行为）和权衡（trade-offs），或者说取舍。</p>
-          <div class="read-more">
-            <a href="/2016/05/09/经济学的思维方式/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/05/02/自控力part3/">自控力 Part 3</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016-05-02
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h1 id="CH-7"><a href="#CH-7" class="headerlink" title="CH 7"></a>CH 7</h1><p>我们无法明确地预知未来，这为我们带来了诱惑，让我们拖延着不做某些事。</p>
-<p>深入剖析</p>
-<ul>
-<li>你给未来的奖励打了几折？在你的意志力挑战中，每当你屈服于诱惑或拖延的时候，你会出售哪些未来的奖励？</li>
-<li>你在等待未来的自己吗？你是否在推迟重要的改变或任务，等待自控力更强的未来的自己出现？</li>
-<li>为了你自己好，你是否太“高瞻远瞩”了？你是否觉得放纵自己比抵抗诱惑还困难？</li>
-</ul>
-<p>意志力实验</p>
-<ul>
-<li>等待10分钟。在诱惑面前强制安排10分钟的等待时间。在这10分钟里，一定要时刻想着长远的奖励，抵制住诱惑。</li>
-<li>降低你的折扣率。当你受到诱惑，要做和长期利益相悖的事情时，请想一想，这个选择意味着，你为了及时的满足感放弃了更好的长期奖励。</li>
-<li>预先对未来的自己做出承诺。作好拒绝诱惑的准备，让改变偏好变得更难，用奖励或威胁来激励未来的自己。</li>
-<li>预见未来的自己。创造一个未来的记忆，给未来的自己发条信息，想象一下未来的自己。</li>
-</ul>
-          <div class="read-more">
-            <a href="/2016/05/02/自控力part3/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/04/19/自控力part2/">自控力 Part 2</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016-04-19
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h1 id="CH-4"><a href="#CH-4" class="headerlink" title="CH 4"></a>CH 4</h1><p>当我们将意志力挑战看成衡量道德水平的标准时，善行就会允许我们做坏事。为了能更好地自控，我们需要忘掉美德，关注目标和价值观。</p>
-<p>深入剖析：</p>
-<ul>
-<li>善与恶：当你的意志力挑战成功时，你会不会告诉自己你很“好”，然后允许自己做一些“坏”事。</li>
-<li>你是否在向明天赊账？你是不是告诉自己明天会弥补今天的过错？如果是这样的话，你是否真的弥补上了？光环效应：你是否只看到坏东西好的一面，如折扣省钱、零脂肪、保护环境。</li>
-<li>你觉得自己是谁？当你想到你的意志力挑战时，你觉得哪部份的你才是“真实”的你？是想追求目标的你，还是需要被控制的你？</li>
-</ul>
-<p>意志力实验：</p>
-<ul>
-<li>明天和今天毫无区别。当你想改变行为的时候，试着减少行为的变化性，而不是减少某种行为。</li>
-<li>取消许可，牢记理由。下一回，当你发现自己在用曾经的善行放纵辩护的时候，停下来想一想你做“好”事的原因，而不是你应不应该得到奖励。</li>
-</ul>
-          <div class="read-more">
-            <a href="/2016/04/19/自控力part2/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/04/03/自控力part1/">自控力 Part 1</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016-04-03
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h1 id="CH-1"><a href="#CH-1" class="headerlink" title="CH 1"></a>CH 1</h1><p>意志力实际上是“我要做”、“我不要”和“我想要”这三种力量。它们协同努力，让我们变成更好的自己。</p>
-<p>深入剖析：</p>
-<ul>
-<li>更难的事是什么？</li>
-<li>认清两个自我。你的意志力挑战是如何描述相抗衡的两个自我？冲动的自己想要什么？明智的自己又想要什么？</li>
-</ul>
-<p>意志力实验：</p>
-<ul>
-<li>记录你的意志力选择。至少选一天，注意观察你做的关于意志力的决定。</li>
-<li>5分钟大脑训练冥想。在脑海中默念“呼”和“吸”，把注意力集中在呼吸上。当你开始走神的时候，重新集中注意力。</li>
-</ul>
-          <div class="read-more">
-            <a href="/2016/04/03/自控力part1/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/02/21/C-入门经典part6/">C#入门经典 Part 6</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016-02-21
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h1 id="CH-23"><a href="#CH-23" class="headerlink" title="CH 23"></a>CH 23</h1><p>LINQ查询<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> results = </span><br><span class="line">    <span class="keyword">from</span> n <span class="keyword">in</span> names</span><br><span class="line">    <span class="keyword">where</span> n.StartsWith(<span class="string">"S"</span>)</span><br><span class="line">    <span class="keyword">orderby</span> n <span class="keyword">descending</span> <span class="comment">// orderby n.Substring(n.Length - 1)</span></span><br><span class="line">    <span class="keyword">select</span> n <span class="comment">// select new(n, ...)</span></span><br><span class="line">    ;</span><br></pre></td></tr></table></figure></p>
-<p>方法语法<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> results = names.OrderBy(n =&gt; n).Where(n =&gt; n.StartsWith(<span class="string">"S"</span>));</span><br><span class="line"><span class="keyword">var</span> results = names.OrderByDescending(n =&gt; n.Substring(n.Length - <span class="number">1</span>)).Where(n =&gt; n.StartsWith(<span class="string">"S"</span>)).<span class="keyword">select</span>(n =&gt; <span class="keyword">new</span>(n, ...)).Distinct();</span><br></pre></td></tr></table></figure></p>
-          <div class="read-more">
-            <a href="/2016/02/21/C-入门经典part6/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/02/16/C-入门经典part5/">C#入门经典 Part 5</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016-02-16
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h1 id="CH-13"><a href="#CH-13" class="headerlink" title="CH 13"></a>CH 13</h1><p>事件(p325)</p>
-<p>匿名方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">myConnection += delegate(int a, string b)</span><br><span class="line">&#123;</span><br><span class="line">    // ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>特性(p344)</p>
-          <div class="read-more">
-            <a href="/2016/02/16/C-入门经典part5/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2016/01/20/C-入门经典part4/">C#入门经典 Part 4</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2016-01-20
-        </span>
-        
-        
-      </div>
-    </header>
-
-    
-    
-
-
-    <div class="post-content">
-      
-        
-        
-          
-        
-
-        
-          <h1 id="CH-12"><a href="#CH-12" class="headerlink" title="CH 12"></a>CH 12</h1><p>可空类型: <code>System.Nullable&lt;T&gt;</code><br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">System.Nullble&lt;<span class="keyword">int</span>&gt; nullableInt;</span><br><span class="line">nullableInt = <span class="literal">null</span>; <span class="comment">// 等价于nullableInt = new System.Nullable&lt;int&gt;();</span></span><br></pre></td></tr></table></figure></p>
-<p>测试可空类型变量是否为null<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if(nullableInt == null) // ...</span><br><span class="line">if(nullableInt.HasValue) // ...</span><br></pre></td></tr></table></figure></p>
-          <div class="read-more">
-            <a href="/2016/01/20/C-入门经典part4/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-
-    
-
-  </article>
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    
-    
-      <a class="next" href="/page/2/">
-        <span class="next-text">下一页</span>
+      <a class="next" href="/2018/06/06/Freewriting1/">
+        <span class="next-text nav-default">Freewriting 1</span>
+        <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
     
   </nav>
 
+      </footer>
+    
+
+  </article>
+
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -906,6 +487,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     
