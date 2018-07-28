@@ -215,6 +215,58 @@
     <header class="post-header">
       <h1 class="post-title">
         
+          <a class="post-link" href="/2016/02/21/C-入门经典part6/">C#入门经典 Part 6</a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2016-02-21
+        </span>
+        
+        
+        <div class="post-visits"
+             data-url="/2016/02/21/C-入门经典part6/"
+             data-title="C#入门经典 Part 6">
+            Views 0
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+
+
+    <div class="post-content">
+      
+        
+        
+          
+        
+
+        
+          <h1 id="CH-23"><a href="#CH-23" class="headerlink" title="CH 23"></a>CH 23</h1><p>LINQ查询<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> results = </span><br><span class="line">    <span class="keyword">from</span> n <span class="keyword">in</span> names</span><br><span class="line">    <span class="keyword">where</span> n.StartsWith(<span class="string">"S"</span>)</span><br><span class="line">    <span class="keyword">orderby</span> n <span class="keyword">descending</span> <span class="comment">// orderby n.Substring(n.Length - 1)</span></span><br><span class="line">    <span class="keyword">select</span> n <span class="comment">// select new(n, ...)</span></span><br><span class="line">    ;</span><br></pre></td></tr></table></figure></p>
+<p>方法语法<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> results = names.OrderBy(n =&gt; n).Where(n =&gt; n.StartsWith(<span class="string">"S"</span>));</span><br><span class="line"><span class="keyword">var</span> results = names.OrderByDescending(n =&gt; n.Substring(n.Length - <span class="number">1</span>)).Where(n =&gt; n.StartsWith(<span class="string">"S"</span>)).<span class="keyword">select</span>(n =&gt; <span class="keyword">new</span>(n, ...)).Distinct();</span><br></pre></td></tr></table></figure></p>
+          <div class="read-more">
+            <a href="/2016/02/21/C-入门经典part6/" class="read-more-link">Read more..</a>
+          </div>
+        
+      
+    </div>
+
+    
+
+    
+
+  </article>
+
+    
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
           <a class="post-link" href="/2016/02/16/C-入门经典part5/">C#入门经典 Part 5</a>
         
       </h1>
