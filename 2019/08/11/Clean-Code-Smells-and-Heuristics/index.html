@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta name="generator" content="Hexo 3.9.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+  <meta name="description" content="Clean Code - Smells and Heuristics">
+
+
+
+
+  <meta name="keywords" content="SWE">
+
+
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tom Du">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.9.0">
+
+
+
+<link rel="canonical" href="http://tomdu.github.io/2019/08/11/Clean-Code-Smells-and-Heuristics/">
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css">
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.9.0">
+
+
+
+  
+
+
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.1.1/av-min.js"></script>
+  <script id="leancloud">
+    AV.init({
+      appId: "9ya7aheWEUnOJLJ9tDJ9q9Su-gzGzoHsz",
+      appKey: "CKeOrSr6sFPA81yXw1pWrqcX"
+    });
+  </script>
+
+
+
+
+<script>
+  window.config = {"title":"Tom Du","subtitle":"Sizhong's Blog.","description":"Yo~","author":"Sizhong Du","language":"en","timezone":null,"url":"http://tomdu.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":year-:month-:day-:title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"hexo-theme-even","deploy":{"type":"git","repo":"git@github.com:TomDu/tomdu.github.io.git"},"ignore":[],"keywords":"SWE","index_generator":{"per_page":10,"order_by":"-date","path":""},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"tag_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"since":2015,"favicon":"/favicon.ico","rss":false,"menu":{"Home":"/","Archives":"/archives/","Tags":"/tags","About":"/about"},"color":"Default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":false,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":null,"stack-overflow":null,"twitter":null,"facebook":null,"linkedin":null,"google":null,"github":"https://github.com/tomdu","weibo":"http://weibo.com/dusizhong","zhihu":null,"douban":null,"pocket":null,"tumblr":null,"instagram":null},"leancloud":{"app_id":"9ya7aheWEUnOJLJ9tDJ9q9Su-gzGzoHsz","app_key":"CKeOrSr6sFPA81yXw1pWrqcX"},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.9.0"};
+</script>
+
+    <title> Clean Code - Smells and Heuristics - Tom Du </title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">Tom Du</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            Tags
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            About
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">Tom Du</a>
+</div>
+
+<nav class="site-navbar">
+  
+    <ul id="menu" class="menu">
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            
+            
+              Home
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            
+            
+              Archives
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              Tags
+            
+          </a>
+        </li>
+      
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            
+            
+              About
+            
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Clean Code - Smells and Heuristics
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-08-11
+        </span>
+        
+        
+        <div class="post-visits" data-url="/2019/08/11/Clean-Code-Smells-and-Heuristics/" data-title="Clean Code - Smells and Heuristics">
+            Views 0
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#COMMENTS"><span class="toc-text">COMMENTS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ENVIRONMENT"><span class="toc-text">ENVIRONMENT</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FUNCTIONS"><span class="toc-text">FUNCTIONS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GENERAL"><span class="toc-text">GENERAL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JAVA"><span class="toc-text">JAVA</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NAMES"><span class="toc-text">NAMES</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TESTS"><span class="toc-text">TESTS</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <p>From <strong><em>Clean Code, <a href="https://en.wikipedia.org/wiki/Robert_C._Martin" target="_blank" rel="noopener">Robert C. Martin</a></em></strong></p>
+<hr>
+<h1 id="COMMENTS"><a href="#COMMENTS" class="headerlink" title="COMMENTS"></a>COMMENTS</h1><p><strong>C1: Inappropriate Information</strong></p>
+<p>Comments should be reserved for technical notes about the code and design.</p>
+<p><strong>C2: Obsolete Comment</strong></p>
+<p> Comments get old quickly. It is best not to write a comment that will become obsolete. If you find an obsolete comment, it is best to update it or get rid of it as quickly as possible.</p>
+<a id="more"></a>
+<p> <strong>C3: Redundant Comment</strong></p>
+<p> Comments should say things that the code cannot say for itself.</p>
+<p> <strong>C4: Poorly Written Comment</strong></p>
+<p> A comment worth writing is worth writing well.</p>
+<p> <strong>C5: Commented-Out Code</strong></p>
+<p> When you see commented-out code, delete it!</p>
+<hr>
+<h1 id="ENVIRONMENT"><a href="#ENVIRONMENT" class="headerlink" title="ENVIRONMENT"></a>ENVIRONMENT</h1><p><strong>E1: Build Requires More Than One Step</strong></p>
+<p>You should be able to check out the system with one simple command and then issue one other simple command to build it.</p>
+<p><strong>E2: Tests Require More Than One Step</strong></p>
+<p>You should be able to run all the unit tests with just one command.</p>
+<hr>
+<h1 id="FUNCTIONS"><a href="#FUNCTIONS" class="headerlink" title="FUNCTIONS"></a>FUNCTIONS</h1><p><strong>F1: Too Many Arguments</strong></p>
+<p>No argument is best, followed by one, two, and three. More than three is very questionable and should be avoided with prejudice.</p>
+<p><strong>F2: Output Arguments</strong></p>
+<p>Output arguments are counterintuitive.</p>
+<p><strong>F3: Flag Arguments</strong></p>
+<p>Boolean arguments loudly declare that the function does more than one thing. They are confusing and should be eliminated.</p>
+<p><strong>F4: Dead Function</strong></p>
+<p>Methods that are never called should be discarded.</p>
+<hr>
+<h1 id="GENERAL"><a href="#GENERAL" class="headerlink" title="GENERAL"></a>GENERAL</h1><p><strong>G1: Multiple Languages in One Source File</strong></p>
+<p>The ideal is for a source file to contain one, and only one, language.</p>
+<p><strong>G2: Obvious Behavior Is Unimplemented</strong></p>
+<p>Any function or class should implement the behaviors that another programmer could reasonably expect.</p>
+<p><strong>G3: Incorrect Behavior at the Boundaries</strong></p>
+<p>Don’t rely on your intuition. Look for every boundary condition and write a test for it.</p>
+<p><strong>G4: Overridden Safeties</strong></p>
+<p>It is risky to override safeties.</p>
+<p><strong>G5: Duplication</strong></p>
+<p>Find and eliminate duplication wherever you can.</p>
+<p><strong>G6: Code at Wrong Level of Abstraction</strong></p>
+<p>It is important to create abstractions that separate higher level general concepts from lower level detailed concepts. Isolating abstractions is one of the hardest things that software developers do, and there is no quick fix when you get it wrong.</p>
+<p><strong>G7: Base Classes Depending on Their Derivatives</strong></p>
+<p>In general, base classes should know nothing about their derivatives.</p>
+<p><strong>G8: Too Much Information</strong></p>
+<p>Well-defined modules have very small interfaces that allow you to do a lot with a little. Good software developers learn to limit what they expose at the interfaces of their classes and modules.</p>
+<p>Hide your data. Hide your utility functions. Hide your constants and your temporaries. Don’t create classes with lots of methods or lots of instance variables. Don’t create lots of protected variables and functions for your subclasses. Concentrate on keeping interfaces very tight and very small. Help keep coupling low by limiting information.</p>
+<p><strong>G9: Dead Code</strong></p>
+<p>When you find dead code, do the right thing. Give it a decent burial. Delete it from the system.</p>
+<p><strong>G10: Vertical Separation</strong></p>
+<p>Variables and function should be defined close to where they are used.</p>
+<p>Private functions should be defined just below their first usage.</p>
+<p><strong>G11: Inconsistency</strong></p>
+<p>Be careful with the conventions you choose, and once chosen, be careful to continue to follow them.</p>
+<p><strong>G12: Clutter</strong></p>
+<p>Keep your source files clean, well organized, and free of clutter.</p>
+<p><strong>G13: Artificial Coupling</strong></p>
+<p>Things that don’t depend upon each other should not be artificially coupled.</p>
+<p><strong>G14: Feature Envy</strong></p>
+<p>The methods of a class should be interested in the variables and functions of the class they belong to, and not the variables and functions of other classes. When a method uses accessors and mutators of some other object to manipulate the data within that object, then it envies the scope of the class of that other object. It wishes that it were inside that other class so that it could have direct access to the variables it is manipulating.</p>
+<p><strong>G15: Selector Arguments</strong></p>
+<p>In general it is better to have many functions than to pass some code into a function to select the behavior.</p>
+<p><strong>G16: Obscured Intent</strong></p>
+<p>Make code as expressive as possible.</p>
+<p><strong>G17: Misplaced Responsibility</strong></p>
+<p>Code should be placed where a reader would naturally expect it to be.</p>
+<p><strong>G18: Inappropriate Static</strong></p>
+<p>In general you should prefer nonstatic methods to static methods. If you really want a function to be static, make sure that there is no chance that you’ll want it to behave polymorphically.</p>
+<p><strong>G19: Use Explanatory Variables</strong></p>
+<p>One of the more powerful ways to make a program readable is to break the calculations up into intermediate values that are held in variables with meaningful names.</p>
+<p><strong>G20: Function Names Should Say What They Do</strong></p>
+<p>Yep.</p>
+<p><strong>G21: Understand the Algorithm</strong></p>
+<p>Know how your function works.</p>
+<p><strong>G22: Make Logical Dependencies Physical</strong></p>
+<p>If one module depends upon another, that dependency should be physical, not just logical.</p>
+<p><strong>G23: Prefer Polymorphism to If/Else or Switch/Case</strong></p>
+<p>Consider polymorphism before using a switch.</p>
+<p><strong>G24: Follow Standard Conventions</strong></p>
+<p>Every team should follow a coding standard based on common industry norms.</p>
+<p><strong>G25: Replace Magic Numbers with Named Constants</strong></p>
+<p>It is a bad idea to have raw numbers in your code. You should hide them behind well-named constants.</p>
+<p><strong>G26: Be Precise</strong></p>
+<p>When you make a decision in your code, make sure you make it precisely. Know why you have made it and how you will deal with any exceptions.</p>
+<p><strong>G27: Structure over Convention</strong></p>
+<p>Enforce design decisions with structure over convention.</p>
+<p><strong>G28: Encapsulate Conditionals</strong></p>
+<p>Extract functions that explain the intent of the conditional.</p>
+<p><strong>G29: Avoid Negative Conditionals</strong></p>
+<p>Negatives are just a bit harder to understand than positives.</p>
+<p><strong>G30: Functions Should Do One Thing</strong></p>
+<p>Functions that do more than one thing should be converted into many smaller functions, each of which does one thing.</p>
+<p><strong>G31: Hidden Temporal Couplings</strong></p>
+<p>Temporal couplings are often necessary, but you should not hide the coupling.</p>
+<p><strong>G32: Don’t Be Arbitrary</strong></p>
+<p>Have a reason for the way you structure your code, and make sure that reason is communicated by the structure of the code.</p>
+<p><strong>G33: Encapsulate Boundary Conditions</strong></p>
+<p>Boundary conditions are hard to keep track of. Put the processing for them in one place. Don’t let them leak all over the code.</p>
+<p><strong>G34: Functions Should Descend Only One Level of Abstraction</strong></p>
+<p>The statements within a function should all be written at the same level of abstraction, which should be one level below the operation described by the name of the function.</p>
+<p><strong>G35: Keep Configurable Data at High Levels</strong></p>
+<p>Make it easy to config.</p>
+<p><strong>G36: Avoid Transitive Navigation</strong></p>
+<p>In general we don’t want a single module to know much about its collaborators.</p>
+<hr>
+<h1 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h1><p><strong>J1: Avoid Long Import Lists by Using Wildcards</strong></p>
+<p>Long lists of imports are daunting to the reader.</p>
+<p><strong>J2: Don’t Inherit Constants</strong></p>
+<p>A hideous practice.</p>
+<p><strong>J3: Constants versus Enums</strong></p>
+<p>Use enums.</p>
+<hr>
+<h1 id="NAMES"><a href="#NAMES" class="headerlink" title="NAMES"></a>NAMES</h1><p><strong>N1: Choose Descriptive Names</strong></p>
+<p>Names in software are 90 percent of what make software readable. You need to take the time to choose them wisely and keep them relevant. Names are too important to treat carelessly.</p>
+<p><strong>N2: Choose Names at the Appropriate Level of Abstraction</strong></p>
+<p>Choose names the reflect the level of abstraction of the class or function you are working in.</p>
+<p><strong>N3: Use Standard Nomenclature Where Possible</strong></p>
+<p>Names are easier to understand if they are based on existing convention or usage.</p>
+<p><strong>N4: Unambiguous Names</strong></p>
+<p>Choose names that make the workings of a function or variable unambiguous.</p>
+<p><strong>N5: Use Long Names for Long Scopes</strong></p>
+<p>The length of a name should be related to the length of the scope.</p>
+<p><strong>N6: Avoid Encodings</strong></p>
+<p>Names should not be encoded with type or scope information.</p>
+<p><strong>N7: Names Should Describe Side-Effects</strong></p>
+<p>Names should describe everything that a function, variable, or class is or does.</p>
+<hr>
+<h1 id="TESTS"><a href="#TESTS" class="headerlink" title="TESTS"></a>TESTS</h1><p><strong>T1: Insufficient Tests</strong></p>
+<p>A test suite should test everything that could possibly break. The tests are insufficient so long as there are conditions that have not been explored by the tests or calculations that have not been validated.</p>
+<p><strong>T2: Use a Coverage Tool!</strong></p>
+<p>Coverage tools reports gaps in your testing strategy. They make it easy to find modules, classes, and functions that are insufficiently tested.</p>
+<p><strong>T3: Don’t Skip Trivial Tests</strong></p>
+<p>They are easy to write and their documentary value is higher than the cost to produce them.</p>
+<p><strong>T4: An Ignored Test Is a Question about an Ambiguity</strong></p>
+<p>Sometimes we are uncertain about a behavioral detail because the requirements are unclear. We can express our question about the requirements as a test that is commented out, or as a test that annotated with @Ignore.</p>
+<p><strong>T5: Test Boundary Conditions</strong></p>
+<p>Take special care to test boundary conditions.</p>
+<p><strong>T6: Exhaustively Test Near Bugs</strong></p>
+<p>Bugs tend to congregate. When you find a bug in a function, it is wise to do an exhaustive test of that function.</p>
+<p><strong>T7: Patterns of Failure Are Revealing</strong></p>
+<p>Sometimes you can diagnose a problem by finding patterns in the way the test cases fail. Complete test cases, ordered in a reasonable way, expose patterns.</p>
+<p><strong>T8: Test Coverage Patterns Can Be Revealing</strong></p>
+<p>Looking at the code that is or is not executed by the passing tests gives clues to why the failing tests fail.</p>
+<p><strong>T9: Tests Should Be Fast</strong></p>
+<p>A slow test is a test that won’t get run.</p>
+
+      
+    </div>
+
+    
+      
+      
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/Reading/">Reading</a>
+            
+              <a href="/tags/Programming/">Programming</a>
+            
+              <a href="/tags/Java/">Java</a>
+            
+          </div>
+        
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/2019/01/26/The-career-advice-I-wish-I-had-at-25/">
+        <span class="next-text nav-default">The Career Advice I Wish I Had at 25</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+      </main>
+
+      <footer id="footer" class="footer">
+
+  <div class="social-links">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/tomdu" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+        
+          <a href="http://weibo.com/dusizhong" class="iconfont icon-weibo" title="weibo"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+     
+      2015 - 
+    
+    2019
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Sizhong Du</span>
+  </span>
+</div>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+  
+  
+
+  
+
+
+
+    
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.9.0"></script>
+
+  </body>
+</html>
